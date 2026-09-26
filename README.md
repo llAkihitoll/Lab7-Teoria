@@ -23,6 +23,7 @@ python main.py gramaticas/gramatica1.txt
 ## Estructura
 
 - `main.py`: punto de entrada.
+- `gramatica.py`: lectura del archivo y representación de la gramática.
 - `gramaticas/`: gramáticas del Problema 2 usadas como entrada.
 - `tokenizer.py`, `stack.py`, `shunting_yard.py`, `syntax_tree.py`, `tree_builder.py`,
   `thompson.py`, `afn.py`, `simulador.py`, `variables.py`: motor de expresiones
