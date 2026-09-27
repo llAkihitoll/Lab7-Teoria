@@ -12,6 +12,12 @@ Enlace al video (no listado): _pendiente_
 python main.py gramaticas/gramatica1.txt
 ```
 
+## Pruebas
+
+```
+python -m unittest discover -s tests -v
+```
+
 ## Formato de las gramáticas
 
 - Cada línea es una producción: `S -> 0A0 | 1B1 | BB`
@@ -34,6 +40,8 @@ python main.py gramaticas/gramatica1.txt
   las que quedan en ε y las de la forma A -> A.
 - `gramaticas/`: gramáticas del Problema 2 usadas como entrada.
   `gramatica_con_error.txt` es un ejemplo con un error para probar la validación.
+- `tests/`: pruebas con `unittest` de lectura, validación, símbolos anulables y
+  eliminación de producciones-ε.
 - `tokenizer.py`, `stack.py`, `shunting_yard.py`, `syntax_tree.py`, `tree_builder.py`,
   `thompson.py`, `afn.py`, `simulador.py`, `variables.py`: motor de expresiones
   regulares reutilizado del Proyecto 1 (regex → postfix → árbol → AFN → simulación).
