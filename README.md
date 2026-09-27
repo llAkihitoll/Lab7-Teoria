@@ -28,7 +28,10 @@ python main.py gramaticas/gramatica1.txt
   `upper->(alnum+|/ε)(/|(alnum+|/ε))*`, simulada sobre un AFN construido con el
   motor del Proyecto 1. Si una línea es inválida la ejecución se detiene.
 - `epsilon.py`: detección de símbolos anulables (directos e indirectos, por
-  iteraciones hasta que no aparecen nuevos).
+  iteraciones hasta que no aparecen nuevos) y eliminación de producciones-ε:
+  por cada producción con m apariciones anulables se generan las 2^m
+  combinaciones de quitar o conservar cada una, descartando las repetidas,
+  las que quedan en ε y las de la forma A -> A.
 - `gramaticas/`: gramáticas del Problema 2 usadas como entrada.
   `gramatica_con_error.txt` es un ejemplo con un error para probar la validación.
 - `tokenizer.py`, `stack.py`, `shunting_yard.py`, `syntax_tree.py`, `tree_builder.py`,

@@ -6,6 +6,7 @@ from gramatica import (
     construir_gramatica,
     imprimir_gramatica,
     formatear_cuerpo,
+    simbolo_inicial,
 )
 from validador import validar_lineas
 from epsilon import (
@@ -13,6 +14,8 @@ from epsilon import (
     producciones_anulables,
     imprimir_pasos_anulables,
     ordenar_como_gramatica,
+    eliminar_epsilon,
+    imprimir_pasos_eliminacion,
 )
 
 try:
@@ -63,6 +66,26 @@ def main():
         print("  (ninguna)")
     for cabeza, cuerpo in producciones:
         print(f"  {cabeza} -> {formatear_cuerpo(cuerpo)}")
+
+    titulo("ELIMINACION DE PRODUCCIONES EPSILON")
+    nueva, pasos, eliminadas, sin_producciones = eliminar_epsilon(gramatica, anulables)
+    imprimir_pasos_eliminacion(pasos)
+
+    print("\nProducciones epsilon eliminadas:")
+    if not eliminadas:
+        print("  (ninguna)")
+    for cabeza in eliminadas:
+        print(f"  {cabeza} -> ε")
+    for cabeza in sin_producciones:
+        print(f"\nAviso: {cabeza} solo producia ε, queda sin producciones (es un simbolo inutil).")
+
+    titulo("GRAMATICA SIN PRODUCCIONES EPSILON")
+    imprimir_gramatica(nueva)
+
+    inicial = simbolo_inicial(gramatica)
+    if inicial in anulables:
+        print(f"\nNota: {inicial} es anulable, por lo que ε pertenece a L(G).")
+        print("La gramatica resultante genera L(G) - {ε}.")
 
 
 if __name__ == "__main__":
