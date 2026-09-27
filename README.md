@@ -24,7 +24,11 @@ python main.py gramaticas/gramatica1.txt
 
 - `main.py`: punto de entrada.
 - `gramatica.py`: lectura del archivo y representación de la gramática.
+- `validador.py`: validación de cada producción con la regex
+  `upper->(alnum+|/ε)(/|(alnum+|/ε))*`, simulada sobre un AFN construido con el
+  motor del Proyecto 1. Si una línea es inválida la ejecución se detiene.
 - `gramaticas/`: gramáticas del Problema 2 usadas como entrada.
+  `gramatica_con_error.txt` es un ejemplo con un error para probar la validación.
 - `tokenizer.py`, `stack.py`, `shunting_yard.py`, `syntax_tree.py`, `tree_builder.py`,
   `thompson.py`, `afn.py`, `simulador.py`, `variables.py`: motor de expresiones
   regulares reutilizado del Proyecto 1 (regex → postfix → árbol → AFN → simulación).

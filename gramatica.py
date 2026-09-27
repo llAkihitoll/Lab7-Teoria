@@ -64,10 +64,6 @@ def construir_gramatica(lineas):
     return gramatica
 
 
-def cargar_gramatica(ruta):
-    return construir_gramatica(leer_lineas(ruta))
-
-
 def simbolo_inicial(gramatica):
     return next(iter(gramatica))
 
