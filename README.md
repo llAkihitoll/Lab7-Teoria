@@ -27,6 +27,8 @@ python main.py gramaticas/gramatica1.txt
 - `validador.py`: validación de cada producción con la regex
   `upper->(alnum+|/ε)(/|(alnum+|/ε))*`, simulada sobre un AFN construido con el
   motor del Proyecto 1. Si una línea es inválida la ejecución se detiene.
+- `epsilon.py`: detección de símbolos anulables (directos e indirectos, por
+  iteraciones hasta que no aparecen nuevos).
 - `gramaticas/`: gramáticas del Problema 2 usadas como entrada.
   `gramatica_con_error.txt` es un ejemplo con un error para probar la validación.
 - `tokenizer.py`, `stack.py`, `shunting_yard.py`, `syntax_tree.py`, `tree_builder.py`,

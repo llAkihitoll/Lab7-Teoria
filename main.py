@@ -1,7 +1,19 @@
 import sys
 
-from gramatica import ErrorGramatica, leer_lineas, construir_gramatica, imprimir_gramatica
+from gramatica import (
+    ErrorGramatica,
+    leer_lineas,
+    construir_gramatica,
+    imprimir_gramatica,
+    formatear_cuerpo,
+)
 from validador import validar_lineas
+from epsilon import (
+    encontrar_anulables,
+    producciones_anulables,
+    imprimir_pasos_anulables,
+    ordenar_como_gramatica,
+)
 
 try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -37,6 +49,20 @@ def main():
 
     titulo("GRAMATICA ORIGINAL")
     imprimir_gramatica(gramatica)
+
+    titulo("SIMBOLOS ANULABLES")
+    anulables, pasos = encontrar_anulables(gramatica)
+    imprimir_pasos_anulables(pasos)
+
+    lista = ordenar_como_gramatica(anulables, gramatica)
+    print(f"\nSimbolos anulables: {{{', '.join(lista)}}}" if lista else "\nNo hay simbolos anulables.")
+
+    print("\nProducciones anulables:")
+    producciones = producciones_anulables(gramatica, anulables)
+    if not producciones:
+        print("  (ninguna)")
+    for cabeza, cuerpo in producciones:
+        print(f"  {cabeza} -> {formatear_cuerpo(cuerpo)}")
 
 
 if __name__ == "__main__":
